@@ -1,10 +1,11 @@
-package com.example.music.service;
+package com.example.music.service.impl;
 
 import com.example.music.model.entity.UserEntity;
 import com.example.music.model.entity.UserRoleEntity;
 import com.example.music.model.entity.enums.UserRoleEnum;
 import com.example.music.repository.UserRepository;
 import com.example.music.repository.UserRoleRepository;
+import com.example.music.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -37,11 +38,18 @@ public class UserServiceImpl implements UserService {
             userEntity.setName("admin");
             userEntity.setPassword(passwordEncoder.encode("12345"));
             userEntity.setRoles(Set.of(adminRole,userRole));
+            userEntity.setActive(false);
+
+            userRepository.save(userEntity);
 
             UserEntity user = new UserEntity();
-            userEntity.setName("user");
-            userEntity.setPassword(passwordEncoder.encode("12345"));
-            user.setRoles(Set.of(userRole));
+            user.setName("user");
+            user.setPassword(passwordEncoder.encode("12345"));
+            user.setRoles(Set.of(userRole,adminRole));
+            user.setActive(true);
+
+            userRepository.save(user);
+
         }
     }
 }
