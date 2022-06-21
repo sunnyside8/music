@@ -3,7 +3,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: "jdbc:mysql://localhost:3306/musicWorkshop?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
     username: root
-    password: sh
+    password: 5207418
   servlet:
     multipart:
       max-file-size: 1MB
@@ -27,7 +27,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-    defer-datasource-initialization: true
+    #defer-datasource-initialization: true
   #Cloudinary Properties
   #cloudinary:
   #api-key:
